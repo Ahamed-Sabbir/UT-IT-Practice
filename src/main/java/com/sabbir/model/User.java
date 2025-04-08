@@ -12,11 +12,11 @@ import java.io.Serializable;
 @ToString
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Long Id;
+    private Long id;
 
     @Column(name = "name")
     private String name;

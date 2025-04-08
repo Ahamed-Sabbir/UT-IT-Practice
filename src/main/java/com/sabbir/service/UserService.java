@@ -18,21 +18,21 @@ public class UserService {
         return user;
     }
     public User findById(Long id) {
-        User user = userRepo.findById(id).orElse(null);
+        User user = userRepo.findUserById(id);
         if (user == null) {
             throw new RuntimeException("No user found with id: " + id);
         }
         return user;
     }
     public User save(User user) {
-        User getUser = userRepo.findById(user.getId()).orElse(null);
+        User getUser = userRepo.findByEmail(user.getEmail());
         if (getUser != null) {
-            throw new RuntimeException("User already exists with id: " + user.getId());
+            throw new RuntimeException("User already exists with email: " + user.getEmail());
         }
         return userRepo.save(user);
     }
     public User update(User user) {
-        User getUser = userRepo.findById(user.getId()).orElse(null);
+        User getUser = userRepo.findUserById(user.getId());
         if (getUser == null) {
             throw new RuntimeException("User not exists with id: " + user.getId());
         }
