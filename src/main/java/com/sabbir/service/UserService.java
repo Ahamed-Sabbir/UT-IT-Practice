@@ -31,6 +31,7 @@ public class UserService {
         }
         return userRepo.save(user);
     }
+
     public User update(User user) {
         User getUser = userRepo.findUserById(user.getId());
         if (getUser == null) {
